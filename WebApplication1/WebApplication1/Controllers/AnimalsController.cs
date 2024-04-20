@@ -45,7 +45,7 @@ public class AnimalsController : ControllerBase
     public IActionResult GetAnimal(int id)
     {
         using var sqlConnection = new SqlConnection(_configuration.GetConnectionString("Default"));
-        var sqlCommand = new SqlCommand("SELECT * FROM Animals WHERE ID = @1", sqlConnection);
+        var sqlCommand = new SqlCommand("SELECT * FROM Animals WHERE IdAnimal = @1", sqlConnection);
         sqlCommand.Parameters.AddWithValue("@1", id);
         sqlCommand.Connection.Open();
 
@@ -89,7 +89,7 @@ public class AnimalsController : ControllerBase
         using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("Default")))
         {
             var sqlCommand = new SqlCommand(
-                "UPDATE Animals SET Name = @1, Description = @2, Category = @3, Area = @4 WHERE ID = @5",
+                "UPDATE Animals SET Name = @1, Description = @2, Category = @3, Area = @4 WHERE IdAnimal = @5",
                 sqlConnection
             );
             sqlCommand.Parameters.AddWithValue("@1", request.Name);
@@ -110,7 +110,7 @@ public class AnimalsController : ControllerBase
     {
         using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("Default")))
         {
-            var command = new SqlCommand("DELETE FROM Animals WHERE ID = @1", sqlConnection);
+            var command = new SqlCommand("DELETE FROM Animals WHERE IdAnimal = @1", sqlConnection);
             command.Parameters.AddWithValue("@1", id);
             command.Connection.Open();
 

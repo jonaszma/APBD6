@@ -27,7 +27,7 @@ public static class AnimalsEndpoints
         using (var sqlConnection = new SqlConnection(configuration.GetConnectionString("Default")))
         {
             var sqlCommand = new SqlCommand(
-                "UPDATE Animals SET Name = @1, Description = @2, Category = @3, Area = @4 WHERE ID = @5",
+                "UPDATE Animals SET Name = @1, Description = @2, Category = @3, Area = @4 WHERE IdAnimal = @5",
                 sqlConnection
             );
             sqlCommand.Parameters.AddWithValue("@1", request.Name);
@@ -45,7 +45,7 @@ public static class AnimalsEndpoints
     {
         using (var sqlConnection = new SqlConnection(configuration.GetConnectionString("Default")))
         {
-            var command = new SqlCommand("DELETE FROM Animals WHERE ID = @1", sqlConnection);
+            var command = new SqlCommand("DELETE FROM Animals WHERE IdAnimal = @1", sqlConnection);
             command.Parameters.AddWithValue("@1", id);
             command.Connection.Open();
 
@@ -108,7 +108,7 @@ public static class AnimalsEndpoints
     private static IResult GetAnimal(IConfiguration configuration, int id)
     {
         using var sqlConnection = new SqlConnection(configuration.GetConnectionString("Default"));
-        var sqlCommand = new SqlCommand("SELECT * FROM Animals WHERE ID = @1", sqlConnection);
+        var sqlCommand = new SqlCommand("SELECT * FROM Animals WHERE IdAnimal = @1", sqlConnection);
         sqlCommand.Parameters.AddWithValue("@1", id);
         sqlCommand.Connection.Open();
 

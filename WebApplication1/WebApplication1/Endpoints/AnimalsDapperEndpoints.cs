@@ -31,7 +31,7 @@ public static class AnimalsDapperEndpoints
         using (var sqlConnection = new SqlConnection(configuration.GetConnectionString("Default")))
         {
             var affectedRows = sqlConnection.Execute(
-                "UPDATE Animals SET Name = @Name, Description = @Description, Category = @Category, Area = @Area WHERE ID = @Id",
+                "UPDATE Animals SET Name = @Name, Description = @Description, Category = @Category, Area = @Area WHERE IdAnimal = @Id",
                 new
                 {
                     Name = request.Name, 
@@ -53,7 +53,7 @@ public static class AnimalsDapperEndpoints
         using (var sqlConnection = new SqlConnection(configuration.GetConnectionString("Default")))
         {
             var affectedRows = sqlConnection.Execute(
-                "DELETE FROM Animals WHERE ID = @Id",
+                "DELETE FROM Animals WHERE IdAnimal = @Id",
                 new { Id = id }
             );
             return affectedRows == 0 ? Results.NotFound() : Results.NoContent();
@@ -101,7 +101,7 @@ public static class AnimalsDapperEndpoints
         using (var sqlConnection = new SqlConnection(configuration.GetConnectionString("Default")))
         {
             var animal = sqlConnection.QuerySingleOrDefault<GetAnimalDetailsResponse>(
-                "SELECT * FROM Animals WHERE ID = @Id",
+                "SELECT * FROM Animals WHERE IdAnimal = @Id",
                 new { Id = id }
             );
 
