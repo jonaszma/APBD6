@@ -1,5 +1,5 @@
-using SqlClientExample.Endpoints;
-using SqlClientExample.Validators;
+using WebApplication1.Endpoints;
+using WebApplication1.Validators;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +21,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseHttpsRedirection();
+app.RegisterAnimalsDapperEndpoints();
+app.RegisterAnimalsEndpoints();
+app.MapControllers();
 
 
 
