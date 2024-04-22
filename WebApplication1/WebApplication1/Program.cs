@@ -23,8 +23,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseHttpsRedirection();
-app.RegisterAnimalsDapperEndpoints();
-app.RegisterAnimalsEndpoints();
+//app.RegisterAnimalsDapperEndpoints();
+//app.RegisterAnimalsEndpoints();
 app.MapControllers();
 
 
