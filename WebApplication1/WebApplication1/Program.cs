@@ -1,5 +1,5 @@
-using WebApplication1.Endpoints;
-using WebApplication1.Validators;
+
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.RegisterValidators();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
@@ -23,8 +23,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseHttpsRedirection();
-//app.RegisterAnimalsDapperEndpoints();
-//app.RegisterAnimalsEndpoints();
+
 app.MapControllers();
 
 
